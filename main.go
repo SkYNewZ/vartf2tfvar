@@ -10,17 +10,17 @@ import (
 	"strings"
 )
 
-func Usage() {
+func usage() {
 	fmt.Printf("Usage: %s [OPTIONS] argument ...\n", os.Args[0])
 	flag.PrintDefaults()
 }
 
 func main() {
 
-	// Open file
+	// setup flags
 	var fileArgs string
-	flag.Usage = Usage
-	flag.StringVar(&fileArgs, "file", "variables.tf", "a string var")
+	flag.Usage = usage
+	flag.StringVar(&fileArgs, "file", "variables.tf", "Input Terraform variables files")
 	flag.Parse()
 
 	if filepath.Ext(strings.TrimSpace(fileArgs)) != ".tf" {
@@ -28,12 +28,13 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Open file
 	bytes, err := ioutil.ReadFile(fileArgs)
 
 	// if error while openning
 	if err != nil {
+		usage()
 		fmt.Println(err)
-		Usage()
 		os.Exit(1)
 	}
 
