@@ -1,35 +1,12 @@
 # vartf2tfvar
 
-## Overview [![GoDoc](https://godoc.org/github.com/zaap59/vartf2tfvar?status.svg)](https://godoc.org/github.com/zaap59/vartf2tfvar)
+[![GoDoc](https://godoc.org/github.com/zaap59/vartf2tfvar?status.svg)](https://godoc.org/github.com/zaap59/vartf2tfvar)
 
-Convert variable.tf to tfvars format.
+Convert `variable.tf` file to tfvars format.
 
-## Install
+`./vartf2tfvar -file ./variables-sample.tf` will produce
 
-```sh
-go get github.com/zaap59/vartf2tfvar/vartf2tfvar
-```
-
-## Build
-
-```sh
-cd vartf2tfvar
-go build -o vartf2tfvar .
-```
-
-## Usage 
-
-```sh
-./vartf2tfvar
-Usage: ./vartf2tfvar [OPTIONS] argument ...
-  -file string
-        a string var (default "variables.tf")
-```
-
-## Example 
-
-```sh
- ./vartf2tfvar -file ../variables-sample.tf 
+```hcl
 alb_name = ""
 
 alb_sg = ""
@@ -47,6 +24,23 @@ owner = ""
 user_sg_ids = ""
 ```
 
-## License
+## Usage
 
-MIT.
+```sh
+./vartf2tfvar
+Usage: ./vartf2tfvar [OPTIONS] argument ...
+  -file string
+        a string var (default "variables.tf")
+```
+
+## Install
+
+```sh
+go get -u github.com/zaap59/vartf2tfvar
+```
+
+## Build
+
+```sh
+go build -o vartf2tfvar .
+```
